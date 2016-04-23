@@ -7,12 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3831EE841CB6FBBA000AB914 /* DescribeImageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3831EE831CB6FBBA000AB914 /* DescribeImageResult.swift */; };
+		3831EE861CB6FFE1000AB914 /* OCRImageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3831EE851CB6FFE1000AB914 /* OCRImageResult.swift */; };
+		3831EE881CB7021C000AB914 /* EmotionImageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3831EE871CB7021C000AB914 /* EmotionImageResult.swift */; };
+		3834C5C41CBC30D3009D7897 /* MicrosoftServicesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3834C5C31CBC30D3009D7897 /* MicrosoftServicesClient.swift */; };
+		3834C5C61CBC315C009D7897 /* StdlibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3834C5C51CBC315C009D7897 /* StdlibExtensions.swift */; };
 		3838A1941CB56AB500423913 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3838A1931CB56AB500423913 /* AppDelegate.swift */; };
 		3838A1961CB56AB500423913 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3838A1951CB56AB500423913 /* ViewController.swift */; };
 		3838A1991CB56AB500423913 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3838A1971CB56AB500423913 /* Main.storyboard */; };
 		3838A19B1CB56AB500423913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3838A19A1CB56AB500423913 /* Assets.xcassets */; };
 		3838A19E1CB56AB500423913 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3838A19C1CB56AB500423913 /* LaunchScreen.storyboard */; };
 		3838A1A91CB56AB500423913 /* MicrosoftCognitiveServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3838A1A81CB56AB500423913 /* MicrosoftCognitiveServicesTests.swift */; };
+		3838A1B61CB57DCA00423913 /* AnalyzeImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3838A1B51CB57DCA00423913 /* AnalyzeImage.json */; };
+		3838A1B81CB57FC100423913 /* DescribeImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 3838A1B71CB57FC100423913 /* DescribeImage.json */; };
+		3838A1BA1CB57FF900423913 /* OCR.json in Resources */ = {isa = PBXBuildFile; fileRef = 3838A1B91CB57FF900423913 /* OCR.json */; };
+		3838A1BC1CB5808800423913 /* Emotion.json in Resources */ = {isa = PBXBuildFile; fileRef = 3838A1BB1CB5808800423913 /* Emotion.json */; };
+		3838A1BE1CB5858600423913 /* AnalyzeImageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3838A1BD1CB5858600423913 /* AnalyzeImageResult.swift */; };
+		3838A1C01CB58ABA00423913 /* SubscriptionKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3838A1BF1CB58ABA00423913 /* SubscriptionKeys.swift */; };
+		383FEA581CCC21F9005921BA /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383FEA571CCC21F9005921BA /* CollectionViewModel.swift */; };
+		383FEA5A1CCC222C005921BA /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383FEA591CCC222C005921BA /* Results.swift */; };
+		383FEA5C1CCC2250005921BA /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383FEA5B1CCC2250005921BA /* CollectionViewLayout.swift */; };
+		383FEA5F1CCC228E005921BA /* CellForFullLineText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383FEA5E1CCC228E005921BA /* CellForFullLineText.swift */; };
+		383FEA611CCC22A5005921BA /* CellWithImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383FEA601CCC22A5005921BA /* CellWithImageView.swift */; };
+		383FEA631CCC22CA005921BA /* CellForTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383FEA621CCC22CA005921BA /* CellForTags.swift */; };
+		383FEA661CCC2350005921BA /* ItemWithMaximumWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383FEA651CCC2350005921BA /* ItemWithMaximumWidth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3831EE831CB6FBBA000AB914 /* DescribeImageResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DescribeImageResult.swift; path = Model/DescribeImageResult.swift; sourceTree = "<group>"; };
+		3831EE851CB6FFE1000AB914 /* OCRImageResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OCRImageResult.swift; path = Model/OCRImageResult.swift; sourceTree = "<group>"; };
+		3831EE871CB7021C000AB914 /* EmotionImageResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmotionImageResult.swift; path = Model/EmotionImageResult.swift; sourceTree = "<group>"; };
+		3834C5C31CBC30D3009D7897 /* MicrosoftServicesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MicrosoftServicesClient.swift; path = Network/MicrosoftServicesClient.swift; sourceTree = "<group>"; };
+		3834C5C51CBC315C009D7897 /* StdlibExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StdlibExtensions.swift; sourceTree = "<group>"; };
 		3838A1901CB56AB500423913 /* MicrosoftCognitiveServices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MicrosoftCognitiveServices.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3838A1931CB56AB500423913 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3838A1951CB56AB500423913 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +59,19 @@
 		3838A1A41CB56AB500423913 /* MicrosoftCognitiveServicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MicrosoftCognitiveServicesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3838A1A81CB56AB500423913 /* MicrosoftCognitiveServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrosoftCognitiveServicesTests.swift; sourceTree = "<group>"; };
 		3838A1AA1CB56AB500423913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3838A1B51CB57DCA00423913 /* AnalyzeImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = AnalyzeImage.json; path = Model/JSONTemplates/AnalyzeImage.json; sourceTree = "<group>"; };
+		3838A1B71CB57FC100423913 /* DescribeImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = DescribeImage.json; path = Model/JSONTemplates/DescribeImage.json; sourceTree = "<group>"; };
+		3838A1B91CB57FF900423913 /* OCR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = OCR.json; path = Model/JSONTemplates/OCR.json; sourceTree = "<group>"; };
+		3838A1BB1CB5808800423913 /* Emotion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Emotion.json; path = Model/JSONTemplates/Emotion.json; sourceTree = "<group>"; };
+		3838A1BD1CB5858600423913 /* AnalyzeImageResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalyzeImageResult.swift; path = Model/AnalyzeImageResult.swift; sourceTree = "<group>"; };
+		3838A1BF1CB58ABA00423913 /* SubscriptionKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionKeys.swift; sourceTree = "<group>"; };
+		383FEA571CCC21F9005921BA /* CollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewModel.swift; path = View/ViewModel/CollectionViewModel.swift; sourceTree = "<group>"; };
+		383FEA591CCC222C005921BA /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		383FEA5B1CCC2250005921BA /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
+		383FEA5E1CCC228E005921BA /* CellForFullLineText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellForFullLineText.swift; sourceTree = "<group>"; };
+		383FEA601CCC22A5005921BA /* CellWithImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellWithImageView.swift; sourceTree = "<group>"; };
+		383FEA621CCC22CA005921BA /* CellForTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellForTags.swift; sourceTree = "<group>"; };
+		383FEA651CCC2350005921BA /* ItemWithMaximumWidth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemWithMaximumWidth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +113,16 @@
 		3838A1921CB56AB500423913 /* MicrosoftCognitiveServices */ = {
 			isa = PBXGroup;
 			children = (
+				3838A1B31CB57C8400423913 /* Model */,
+				383FEA551CCC21A5005921BA /* View */,
+				383FEA641CCC231C005921BA /* Controller */,
+				3838A1C11CB5BFD000423913 /* Network */,
 				3838A1931CB56AB500423913 /* AppDelegate.swift */,
-				3838A1951CB56AB500423913 /* ViewController.swift */,
 				3838A1971CB56AB500423913 /* Main.storyboard */,
 				3838A19A1CB56AB500423913 /* Assets.xcassets */,
 				3838A19C1CB56AB500423913 /* LaunchScreen.storyboard */,
 				3838A19F1CB56AB500423913 /* Info.plist */,
+				3838A1BF1CB58ABA00423913 /* SubscriptionKeys.swift */,
 			);
 			path = MicrosoftCognitiveServices;
 			sourceTree = "<group>";
@@ -94,6 +134,84 @@
 				3838A1AA1CB56AB500423913 /* Info.plist */,
 			);
 			path = MicrosoftCognitiveServicesTests;
+			sourceTree = "<group>";
+		};
+		3838A1B31CB57C8400423913 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3834C5C51CBC315C009D7897 /* StdlibExtensions.swift */,
+				383FEA541CCC2199005921BA /* Service */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3838A1B41CB57C9100423913 /* JSONTemplates */ = {
+			isa = PBXGroup;
+			children = (
+				3838A1B51CB57DCA00423913 /* AnalyzeImage.json */,
+				3838A1B71CB57FC100423913 /* DescribeImage.json */,
+				3838A1B91CB57FF900423913 /* OCR.json */,
+				3838A1BB1CB5808800423913 /* Emotion.json */,
+			);
+			name = JSONTemplates;
+			sourceTree = "<group>";
+		};
+		3838A1C11CB5BFD000423913 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3834C5C31CBC30D3009D7897 /* MicrosoftServicesClient.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		383FEA541CCC2199005921BA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3831EE871CB7021C000AB914 /* EmotionImageResult.swift */,
+				3831EE851CB6FFE1000AB914 /* OCRImageResult.swift */,
+				3831EE831CB6FBBA000AB914 /* DescribeImageResult.swift */,
+				3838A1BD1CB5858600423913 /* AnalyzeImageResult.swift */,
+				383FEA591CCC222C005921BA /* Results.swift */,
+				3838A1B41CB57C9100423913 /* JSONTemplates */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		383FEA551CCC21A5005921BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				383FEA5D1CCC227C005921BA /* CollectionViewCells */,
+				383FEA561CCC21D2005921BA /* ViewModel */,
+				383FEA5B1CCC2250005921BA /* CollectionViewLayout.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		383FEA561CCC21D2005921BA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				383FEA571CCC21F9005921BA /* CollectionViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		383FEA5D1CCC227C005921BA /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				383FEA5E1CCC228E005921BA /* CellForFullLineText.swift */,
+				383FEA601CCC22A5005921BA /* CellWithImageView.swift */,
+				383FEA621CCC22CA005921BA /* CellForTags.swift */,
+				383FEA651CCC2350005921BA /* ItemWithMaximumWidth.swift */,
+			);
+			name = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		383FEA641CCC231C005921BA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3838A1951CB56AB500423913 /* ViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,8 +297,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3838A1BA1CB57FF900423913 /* OCR.json in Resources */,
+				3838A1B61CB57DCA00423913 /* AnalyzeImage.json in Resources */,
 				3838A19E1CB56AB500423913 /* LaunchScreen.storyboard in Resources */,
 				3838A19B1CB56AB500423913 /* Assets.xcassets in Resources */,
+				3838A1BC1CB5808800423913 /* Emotion.json in Resources */,
+				3838A1B81CB57FC100423913 /* DescribeImage.json in Resources */,
 				3838A1991CB56AB500423913 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,8 +321,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3831EE881CB7021C000AB914 /* EmotionImageResult.swift in Sources */,
+				3834C5C41CBC30D3009D7897 /* MicrosoftServicesClient.swift in Sources */,
+				3838A1BE1CB5858600423913 /* AnalyzeImageResult.swift in Sources */,
+				383FEA5F1CCC228E005921BA /* CellForFullLineText.swift in Sources */,
 				3838A1961CB56AB500423913 /* ViewController.swift in Sources */,
+				383FEA581CCC21F9005921BA /* CollectionViewModel.swift in Sources */,
+				3834C5C61CBC315C009D7897 /* StdlibExtensions.swift in Sources */,
+				383FEA5C1CCC2250005921BA /* CollectionViewLayout.swift in Sources */,
+				3838A1C01CB58ABA00423913 /* SubscriptionKeys.swift in Sources */,
+				383FEA5A1CCC222C005921BA /* Results.swift in Sources */,
+				3831EE841CB6FBBA000AB914 /* DescribeImageResult.swift in Sources */,
 				3838A1941CB56AB500423913 /* AppDelegate.swift in Sources */,
+				383FEA611CCC22A5005921BA /* CellWithImageView.swift in Sources */,
+				3831EE861CB6FFE1000AB914 /* OCRImageResult.swift in Sources */,
+				383FEA661CCC2350005921BA /* ItemWithMaximumWidth.swift in Sources */,
+				383FEA631CCC22CA005921BA /* CellForTags.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,10 +465,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MicrosoftCognitiveServices/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.hvp.MicrosoftCognitiveServices;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -340,10 +478,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MicrosoftCognitiveServices/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.hvp.MicrosoftCognitiveServices;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -390,6 +530,7 @@
 				3838A1AF1CB56AB500423913 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3838A1B01CB56AB500423913 /* Build configuration list for PBXNativeTarget "MicrosoftCognitiveServicesTests" */ = {
 			isa = XCConfigurationList;
@@ -398,6 +539,7 @@
 				3838A1B21CB56AB500423913 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
