@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ResultsViewController.swift
 //  MicrosoftCognitiveServices
 //
 //  Created by Hendrik von Prince on 06/04/16.
@@ -17,64 +17,22 @@ func fontForTags() -> UIFont {
     return UIFont.systemFontOfSize(17)
 }
 
-class ViewController: UICollectionViewController {
+class ResultsViewController: UICollectionViewController {
     @IBOutlet private weak var layout: CollectionViewLayout!
     
     private var results: Results = Results()
     private var collectionViewModel: CollectionViewModel = CollectionViewModel(results: .None, isStillLoading: false)
-    
 }
 
-
-protocol ResultsCollectorDelegate {
-    func updatedResults(results: Results, finished: Bool)
-}
-
-class ResultsAggregator: MicrosoftServicesDelegate {
-    private let delegate: ResultsCollectorDelegate
-    private var results: Results = Results()
-
-    init(delegate: ResultsCollectorDelegate) {
-        self.delegate = delegate
-    }
-    
-    func client(client: MicrosoftServicesClient, didLoadImage image: UIImage) {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.results.image = image
-            self.delegate.updatedResults(self.results, finished: client.completed())
-        }
-    }
-    
-    func client(client: MicrosoftServicesClient, didReceiveOCRResult ocrResult: ResultOrError<OCRImageResult>) {
-        self.results.ocr = ocrResult
-        self.delegate.updatedResults(self.results, finished: client.completed())
-    }
-    
-    func client(client: MicrosoftServicesClient, didReceiveAnalyzerResult analyzeResult: ResultOrError<AnalyzeImageResult>) {
-        self.results.analyze = analyzeResult
-        self.delegate.updatedResults(self.results, finished: client.completed())
-    }
-    
-    func client(client: MicrosoftServicesClient, didReceiveDescribeResult describeResult: ResultOrError<DescribeImageResult>) {
-        self.results.description = describeResult
-        self.delegate.updatedResults(self.results, finished: client.completed())
-    }
-    
-    func client(client: MicrosoftServicesClient, didReceiveEmotionResult emotionResult: ResultOrError<[EmotionImageResultItem]>) {
-        self.results.emotion = emotionResult
-        self.delegate.updatedResults(self.results, finished: client.completed())
-    }
-}
-
-extension ViewController: ResultsCollectorDelegate {
-    func updatedResults(results: Results, finished: Bool) {
+extension ResultsViewController: ResultsCollectorDelegate {
+    internal func updatedResults(results: Results, finished: Bool) {
         self.results = results
         self.updateUIAfterNewResult(finished: finished)
     }
 }
 
-extension ViewController /* UI Updates */ {
-    func updateUIAfterNewResult(finished finished: Bool) {
+extension ResultsViewController /* UI Updates */ {
+    private func updateUIAfterNewResult(finished finished: Bool) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self.collectionViewModel = CollectionViewModel(results: self.results, isStillLoading: !finished)
             self.layout.model = self.collectionViewModel
@@ -83,7 +41,7 @@ extension ViewController /* UI Updates */ {
     }
 }
 
-extension ViewController /* UICollectionViewDataSource */ {
+extension ResultsViewController /* UICollectionViewDataSource */ {
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.collectionViewModel.sections[section].cells.count
     }

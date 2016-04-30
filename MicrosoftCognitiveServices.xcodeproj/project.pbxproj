@@ -14,7 +14,7 @@
 		3834C5C41CBC30D3009D7897 /* MicrosoftServicesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3834C5C31CBC30D3009D7897 /* MicrosoftServicesClient.swift */; };
 		3834C5C61CBC315C009D7897 /* StdlibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3834C5C51CBC315C009D7897 /* StdlibExtensions.swift */; };
 		3838A1941CB56AB500423913 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3838A1931CB56AB500423913 /* AppDelegate.swift */; };
-		3838A1961CB56AB500423913 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3838A1951CB56AB500423913 /* ViewController.swift */; };
+		3838A1961CB56AB500423913 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3838A1951CB56AB500423913 /* ResultsViewController.swift */; };
 		3838A1991CB56AB500423913 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3838A1971CB56AB500423913 /* Main.storyboard */; };
 		3838A19B1CB56AB500423913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3838A19A1CB56AB500423913 /* Assets.xcassets */; };
 		3838A19E1CB56AB500423913 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3838A19C1CB56AB500423913 /* LaunchScreen.storyboard */; };
@@ -49,7 +49,7 @@
 		3862E4DC1CCD75F600B20951 /* ItemWithMaximumWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383FEA651CCC2350005921BA /* ItemWithMaximumWidth.swift */; };
 		3862E4DD1CCD75FA00B20951 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383FEA571CCC21F9005921BA /* CollectionViewModel.swift */; };
 		3862E4DE1CCD75FA00B20951 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383FEA5B1CCC2250005921BA /* CollectionViewLayout.swift */; };
-		3862E4DF1CCD75FD00B20951 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3838A1951CB56AB500423913 /* ViewController.swift */; };
+		3862E4DF1CCD75FD00B20951 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3838A1951CB56AB500423913 /* ResultsViewController.swift */; };
 		3862E4E01CCD760100B20951 /* MicrosoftServicesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3834C5C31CBC30D3009D7897 /* MicrosoftServicesClient.swift */; };
 		3862E4E11CCD764A00B20951 /* StdlibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3834C5C51CBC315C009D7897 /* StdlibExtensions.swift */; };
 		38702A451CD4BA6A00427E25 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38702A441CD4BA6A00427E25 /* UIImage+Resize.swift */; };
@@ -60,6 +60,12 @@
 		38702A4C1CD5079800427E25 /* Array+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38702A4A1CD5079400427E25 /* Array+Unique.swift */; };
 		38702A4F1CD5099900427E25 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38702A4E1CD5099900427E25 /* AppController.swift */; };
 		38702A501CD5099900427E25 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38702A4E1CD5099900427E25 /* AppController.swift */; };
+		38702A541CD50BBC00427E25 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38702A531CD50BBC00427E25 /* CameraViewController.swift */; };
+		38702A561CD5262800427E25 /* ResultsAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38702A551CD5262800427E25 /* ResultsAggregator.swift */; };
+		38702A571CD5262800427E25 /* ResultsAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38702A551CD5262800427E25 /* ResultsAggregator.swift */; };
+		38702A5B1CD5273700427E25 /* StoryboardIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38702A5A1CD5273700427E25 /* StoryboardIdentifier.swift */; };
+		38702A5C1CD5273700427E25 /* StoryboardIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38702A5A1CD5273700427E25 /* StoryboardIdentifier.swift */; };
+		38B22CD61CD568360040E142 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 38B22CD51CD568360040E142 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,7 +108,7 @@
 		3834C5C51CBC315C009D7897 /* StdlibExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StdlibExtensions.swift; sourceTree = "<group>"; };
 		3838A1901CB56AB500423913 /* MicrosoftCognitiveServices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MicrosoftCognitiveServices.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3838A1931CB56AB500423913 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3838A1951CB56AB500423913 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3838A1951CB56AB500423913 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultsViewController.swift; path = ViewController/ResultsViewController.swift; sourceTree = "<group>"; };
 		3838A1981CB56AB500423913 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3838A19A1CB56AB500423913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3838A19D1CB56AB500423913 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -133,6 +139,10 @@
 		38702A471CD4D05C00427E25 /* Array+MapWithIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+MapWithIndex.swift"; path = "Cocoa Extensions/Array+MapWithIndex.swift"; sourceTree = "<group>"; };
 		38702A4A1CD5079400427E25 /* Array+Unique.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Unique.swift"; path = "Cocoa Extensions/Array+Unique.swift"; sourceTree = "<group>"; };
 		38702A4E1CD5099900427E25 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppController.swift; path = Controller/AppController.swift; sourceTree = "<group>"; };
+		38702A531CD50BBC00427E25 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = ViewController/CameraViewController.swift; sourceTree = "<group>"; };
+		38702A551CD5262800427E25 /* ResultsAggregator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsAggregator.swift; path = Controller/ResultsAggregator.swift; sourceTree = "<group>"; };
+		38702A5A1CD5273700427E25 /* StoryboardIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifier.swift; sourceTree = "<group>"; };
+		38B22CD51CD568360040E142 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +173,7 @@
 		3838A1871CB56AB500423913 = {
 			isa = PBXGroup;
 			children = (
+				38B22CD51CD568360040E142 /* README.md */,
 				3838A1921CB56AB500423913 /* MicrosoftCognitiveServices */,
 				3838A1A71CB56AB500423913 /* MicrosoftCognitiveServicesTests */,
 				3862E4C31CCD6E7600B20951 /* MicrosoftCognitiveServicesAction */,
@@ -190,13 +201,7 @@
 				38702A4D1CD5097500427E25 /* ViewController */,
 				383FEA641CCC231C005921BA /* Controller */,
 				3838A1C11CB5BFD000423913 /* Network */,
-				3838A1931CB56AB500423913 /* AppDelegate.swift */,
-				3838A1BF1CB58ABA00423913 /* SubscriptionKeys.swift */,
-				3838A1971CB56AB500423913 /* Main.storyboard */,
-				3838A19A1CB56AB500423913 /* Assets.xcassets */,
-				3862E4E31CCD7BAD00B20951 /* MicrosoftCognitiveServices.entitlements */,
-				3838A19C1CB56AB500423913 /* LaunchScreen.storyboard */,
-				3838A19F1CB56AB500423913 /* Info.plist */,
+				38702A581CD526D800427E25 /* Resources */,
 			);
 			path = MicrosoftCognitiveServices;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				3834C5C51CBC315C009D7897 /* StdlibExtensions.swift */,
+				38702A551CD5262800427E25 /* ResultsAggregator.swift */,
 				383FEA541CCC2199005921BA /* Services */,
 			);
 			name = Model;
@@ -282,7 +288,9 @@
 		383FEA641CCC231C005921BA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3838A1931CB56AB500423913 /* AppDelegate.swift */,
 				38702A4E1CD5099900427E25 /* AppController.swift */,
+				38702A5A1CD5273700427E25 /* StoryboardIdentifier.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -312,9 +320,31 @@
 		38702A4D1CD5097500427E25 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3838A1951CB56AB500423913 /* ViewController.swift */,
+				3838A1951CB56AB500423913 /* ResultsViewController.swift */,
+				38702A531CD50BBC00427E25 /* CameraViewController.swift */,
 			);
 			name = ViewController;
+			sourceTree = "<group>";
+		};
+		38702A581CD526D800427E25 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				38702A591CD526E500427E25 /* UI */,
+				3838A1BF1CB58ABA00423913 /* SubscriptionKeys.swift */,
+				3862E4E31CCD7BAD00B20951 /* MicrosoftCognitiveServices.entitlements */,
+				3838A19F1CB56AB500423913 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		38702A591CD526E500427E25 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3838A19A1CB56AB500423913 /* Assets.xcassets */,
+				3838A1971CB56AB500423913 /* Main.storyboard */,
+				3838A19C1CB56AB500423913 /* LaunchScreen.storyboard */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,14 +503,18 @@
 				3834C5C41CBC30D3009D7897 /* MicrosoftServicesClient.swift in Sources */,
 				3838A1BE1CB5858600423913 /* AnalyzeImageResult.swift in Sources */,
 				383FEA5F1CCC228E005921BA /* CellForFullLineText.swift in Sources */,
-				3838A1961CB56AB500423913 /* ViewController.swift in Sources */,
+				3838A1961CB56AB500423913 /* ResultsViewController.swift in Sources */,
 				38702A4B1CD5079400427E25 /* Array+Unique.swift in Sources */,
+				38B22CD61CD568360040E142 /* README.md in Sources */,
 				383FEA581CCC21F9005921BA /* CollectionViewModel.swift in Sources */,
 				38702A451CD4BA6A00427E25 /* UIImage+Resize.swift in Sources */,
 				3834C5C61CBC315C009D7897 /* StdlibExtensions.swift in Sources */,
+				38702A5B1CD5273700427E25 /* StoryboardIdentifier.swift in Sources */,
 				383FEA5C1CCC2250005921BA /* CollectionViewLayout.swift in Sources */,
 				3838A1C01CB58ABA00423913 /* SubscriptionKeys.swift in Sources */,
+				38702A541CD50BBC00427E25 /* CameraViewController.swift in Sources */,
 				38702A4F1CD5099900427E25 /* AppController.swift in Sources */,
+				38702A561CD5262800427E25 /* ResultsAggregator.swift in Sources */,
 				383FEA5A1CCC222C005921BA /* Results.swift in Sources */,
 				3831EE841CB6FBBA000AB914 /* DescribeImageResult.swift in Sources */,
 				3838A1941CB56AB500423913 /* AppDelegate.swift in Sources */,
@@ -510,12 +544,14 @@
 				3862E4E11CCD764A00B20951 /* StdlibExtensions.swift in Sources */,
 				3862E4C51CCD6E7600B20951 /* ActionViewController.swift in Sources */,
 				38702A4C1CD5079800427E25 /* Array+Unique.swift in Sources */,
-				3862E4DF1CCD75FD00B20951 /* ViewController.swift in Sources */,
+				3862E4DF1CCD75FD00B20951 /* ResultsViewController.swift in Sources */,
+				38702A571CD5262800427E25 /* ResultsAggregator.swift in Sources */,
 				3862E4DC1CCD75F600B20951 /* ItemWithMaximumWidth.swift in Sources */,
 				3862E4DA1CCD75F600B20951 /* CellWithImageView.swift in Sources */,
 				3862E4DB1CCD75F600B20951 /* CellForTags.swift in Sources */,
 				3862E4E01CCD760100B20951 /* MicrosoftServicesClient.swift in Sources */,
 				38702A501CD5099900427E25 /* AppController.swift in Sources */,
+				38702A5C1CD5273700427E25 /* StoryboardIdentifier.swift in Sources */,
 				3862E4D91CCD75F600B20951 /* CellForFullLineText.swift in Sources */,
 				3862E4D81CCD75F200B20951 /* Results.swift in Sources */,
 				3862E4D71CCD75F200B20951 /* AnalyzeImageResult.swift in Sources */,

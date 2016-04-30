@@ -1,0 +1,3 @@
+# Known Issues
+- Receiving "Snapshotting a view that has not been rendered results in an empty snapshot. Ensure your view has been rendered at least once before snapshotting or snapshot after screen updates." on console when launching the app. This is caused by adding the UIImagePickerController as child-view-controller in viewDidLoad, which is probably not right. Eventually, UIImagePickerController should be replaced.
+- On my iPhone 6s, scrolling the collection-view scatters. Haven't thought out why yet. Framerate in Instruments looks fine, a first look on profiling the CPU didn't show anything suspicious. It might be related to the rounded-corners of the CellForTags, but I would assume that an 6s should not be impressed by that.

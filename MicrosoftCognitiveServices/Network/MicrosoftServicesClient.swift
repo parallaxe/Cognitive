@@ -258,12 +258,14 @@ class MicrosoftServicesClient {
         
         // reduce image-size to save bandwidth and speed up the uploading
         let scaledImage: UIImage
-        if image.size.width > 1000 || image.size.height > 1000 {
-            scaledImage = image.imageResizedToFitInBounds(CGSize(width: 1000, height: 1000))
+        let maximumSize: CGFloat = 500
+        if image.size.width > maximumSize || image.size.height > maximumSize {
+            scaledImage = image.imageResizedToFitInBounds(CGSize(width: maximumSize, height: maximumSize))
         } else {
             scaledImage = image
         }
         if let dataRepresentation = UIImageJPEGRepresentation(scaledImage, CGFloat(0.8)) {
+            print("filesize: \(dataRepresentation.length)")
             let data = ServicePostData.Data(dataRepresentation)
             self.startAnalyzingWithData(data)
         }

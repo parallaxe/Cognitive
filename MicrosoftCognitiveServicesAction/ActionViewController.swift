@@ -15,9 +15,14 @@ func extractActionItems(extensionContext: NSExtensionContext, handler: ActionIte
     let items: [NSItemProvider] = extensionContext.inputItems.flatMap{ $0 as? NSExtensionItem}.flatMap{ $0.attachments }.flatMap{$0}.flatMap{$0 as? NSItemProvider} ?? []
     for itemProvider in items {
         if itemProvider.hasItemConformingToTypeIdentifier(kUTTypeImage as String) {
-            itemProvider.loadItemForTypeIdentifier(kUTTypeImage as String, options: nil, completionHandler: { (imageURL, error) in
-                let image = UIImage(contentsOfFile: (imageURL as! NSURL).path!)!
-                handler.handleActionItem(.Image(image))
+            itemProvider.loadItemForTypeIdentifier(kUTTypeImage as String, options: nil, completionHandler: { (image_, error) in
+                if let imageURL = image_ as? NSURL {
+                    let image = UIImage(contentsOfFile: imageURL.path!)!
+                    handler.handleActionItem(.Image(image))
+                } else if let imageData = image_ as? NSData {
+                    let image = UIImage(data: imageData)!
+                    handler.handleActionItem(.Image(image))
+                }
                 
             })
         } else if itemProvider.hasItemConformingToTypeIdentifier(kUTTypeURL as String) {
@@ -30,7 +35,7 @@ func extractActionItems(extensionContext: NSExtensionContext, handler: ActionIte
 }
 
 class ActionViewController: UIViewController {
-    weak var mainViewController: ViewController!
+    weak var mainViewController: ResultsViewController!
     var appController: AppController!
     
     override func viewDidAppear(animated: Bool) {
@@ -41,7 +46,7 @@ class ActionViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EmbeddingMainViewController" {
-            self.mainViewController = segue.destinationViewController as! ViewController
+            self.mainViewController = segue.destinationViewController as! ResultsViewController
             self.appController = AppController(withResultsCollectorDelegate: self.mainViewController)
         }
     }

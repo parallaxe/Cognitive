@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uTY-ie-fw5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WEQ-1C-zAa">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Results-->
         <scene sceneID="UhQ-at-UEu">
             <objects>
-                <collectionViewController storyboardIdentifier="ViewController" id="uTY-ie-fw5" customClass="ViewController" customModule="MicrosoftCognitiveServices" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="ResultsViewController" id="uTY-ie-fw5" customClass="ResultsViewController" customModule="MicrosoftCognitiveServices" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="d7J-JK-PVL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CellWithImageView" reuseIdentifier="CellWithImageView" id="QSg-1J-P5f" customClass="CellWithImageView" customModule="MicrosoftCognitiveServices" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
@@ -52,7 +52,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellForFullLineText" id="3lT-fZ-a5O" customClass="CellForFullLineText" customModule="MicrosoftCognitiveServices" customModuleProvider="target">
-                                <rect key="frame" x="1" y="410" width="598" height="30"/>
+                                <rect key="frame" x="1" y="474" width="598" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="598" height="30"/>
@@ -79,7 +79,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CellForTags" reuseIdentifier="CellForTags" id="2dF-8p-xT1" customClass="CellForTags" customModule="MicrosoftCognitiveServices" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="455" width="87" height="20"/>
+                                <rect key="frame" x="0.0" y="519" width="87" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="87" height="20"/>
@@ -106,7 +106,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellForHeadline" id="Vsl-dK-6Y9" customClass="CellForHeadline" customModule="MicrosoftCognitiveServices" customModuleProvider="target">
-                                <rect key="frame" x="97" y="455" width="94" height="20"/>
+                                <rect key="frame" x="97" y="519" width="94" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="94" height="20"/>
@@ -133,7 +133,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellForLoading" id="xs8-0m-8fT">
-                                <rect key="frame" x="201" y="450" width="220" height="30"/>
+                                <rect key="frame" x="201" y="514" width="220" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="220" height="30"/>
@@ -166,13 +166,84 @@
                             <outlet property="delegate" destination="uTY-ie-fw5" id="oBG-BM-5nr"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="Results" id="OF0-Wy-3U7"/>
                     <connections>
                         <outlet property="layout" destination="3dW-a3-Jfc" id="bTR-Yz-QMl"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6yd-2k-O4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="621" y="506"/>
+            <point key="canvasLocation" x="1473" y="536"/>
+        </scene>
+        <!--Capture an image for analyzing-->
+        <scene sceneID="QUx-jj-IN7">
+            <objects>
+                <viewController id="7SB-Je-mCt" customClass="CameraViewController" customModule="MicrosoftCognitiveServices" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8qj-Z2-we2"/>
+                        <viewControllerLayoutGuide type="bottom" id="vZU-dh-gHI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ywu-DM-Bc2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need a device with enabled camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1V9-Hp-SOH">
+                                <rect key="frame" x="164" y="289" width="273" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1V9-Hp-SOH" firstAttribute="centerY" secondItem="ywu-DM-Bc2" secondAttribute="centerY" id="Cdf-yr-8S0"/>
+                            <constraint firstItem="1V9-Hp-SOH" firstAttribute="centerX" secondItem="ywu-DM-Bc2" secondAttribute="centerX" id="xdv-gO-GFs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Capture an image for analyzing" id="Q7A-Od-vN7"/>
+                    <connections>
+                        <outlet property="cameraOverlayView" destination="eoC-BT-hKg" id="hct-yn-rx7"/>
+                        <segue destination="uTY-ie-fw5" kind="show" identifier="AnalyzeImage" id="TJs-eI-vfH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yub-mm-uy9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="eoC-BT-hKg">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KbC-a7-ztS">
+                            <rect key="frame" x="82" y="60" width="77" height="36"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <state key="normal" title="Analyze"/>
+                            <connections>
+                                <action selector="buttonCaptureImageTapped:" destination="7SB-Je-mCt" eventType="touchUpInside" id="W2j-lI-zPv"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="KbC-a7-ztS" secondAttribute="bottom" constant="32" id="0hP-R9-1MZ"/>
+                        <constraint firstItem="KbC-a7-ztS" firstAttribute="centerX" secondItem="eoC-BT-hKg" secondAttribute="centerX" id="ra3-uj-xSb"/>
+                    </constraints>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="720" y="536"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xfr-Nw-nz3">
+            <objects>
+                <navigationController id="WEQ-1C-zAa" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5l8-q8-8pd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7SB-Je-mCt" kind="relationship" relationship="rootViewController" id="Zeg-Ix-huK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pvh-3r-6Ao" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-91" y="536"/>
         </scene>
     </scenes>
 </document>

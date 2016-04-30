@@ -157,6 +157,6 @@ class CollectionViewLayout: UICollectionViewLayout {
     }
     
     override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-        return false
+        return true
     }
 }
