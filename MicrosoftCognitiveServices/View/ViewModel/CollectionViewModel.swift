@@ -15,6 +15,7 @@ struct CollectionViewModel {
         case IsAdult(Bool)
         case IsRacy(Bool)
         case Tag(String)
+        case LoadingInformation
     }
     
     struct Section {
@@ -23,7 +24,7 @@ struct CollectionViewModel {
     
     let sections : [Section]
     
-    init(results: Results?) {
+    init(results: Results?, isStillLoading: Bool) {
         guard let results = results else {
             self.sections = []
             return
@@ -31,7 +32,11 @@ struct CollectionViewModel {
         
         var sections : [Section] = []
         
-        if let caption = results.description?.description?.captions?[0].text {
+        if isStillLoading {
+            sections.append(Section(cells: [.LoadingInformation]))
+        }
+        
+        if let caption = results.description?.result?.description?.captions?[0].text {
             sections.append(Section(cells: [.Description(caption)]))
         }
         
@@ -39,16 +44,16 @@ struct CollectionViewModel {
             sections.append(Section(cells: [.Image(image)]))
         }
         
-        let isAdultContent = results.analyze?.adult?.isAdultContent
-        let isRacyContent = results.analyze?.adult?.isRacyContent
+        let isAdultContent = results.analyze?.result?.adult?.isAdultContent
+        let isRacyContent = results.analyze?.result?.adult?.isRacyContent
         
         if let isAdultContent = isAdultContent, isRacyContent = isRacyContent {
             sections.append(Section(cells: [.IsAdult(isAdultContent != 0), .IsRacy(isRacyContent != 0)]))
         }
         
-        let tagsFromDescription = results.description?.description?.tags ?? []
-        let tagsFromAnalyzing = results.analyze?.tags.flatMap{$0.flatMap{$0.name}} ?? []
-        let allTags = [tagsFromDescription, tagsFromAnalyzing].flatMap{$0}
+        let tagsFromDescription = results.description?.result?.description?.tags ?? []
+        let tagsFromAnalyzing = results.analyze?.result?.tags.flatMap{$0.flatMap{$0.name}} ?? []
+        let allTags = [tagsFromDescription, tagsFromAnalyzing].flatMap{$0}.uniq()
         
         sections.append(Section(cells: allTags.map{.Tag($0)}))
         

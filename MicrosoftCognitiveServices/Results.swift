@@ -10,8 +10,8 @@ import UIKit
 
 struct Results {
     var image: UIImage?
-    var analyze: AnalyzeImageResult?
-    var description: DescribeImageResult?
-    var ocr: OCRImageResult?
-    var emotion: [EmotionImageResultItem]?
+    var analyze: ResultOrError<AnalyzeImageResult>?
+    var description: ResultOrError<DescribeImageResult>?
+    var ocr: ResultOrError<OCRImageResult>?
+    var emotion: ResultOrError<[EmotionImageResultItem]>?
 }

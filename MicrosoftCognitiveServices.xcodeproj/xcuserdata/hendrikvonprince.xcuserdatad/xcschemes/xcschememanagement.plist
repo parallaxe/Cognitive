@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>MicrosoftCognitiveServicesAction.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>3838A1A31CB56AB500423913</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3862E4C11CCD6E7600B20951</key>
 		<dict>
 			<key>primary</key>
 			<true/>

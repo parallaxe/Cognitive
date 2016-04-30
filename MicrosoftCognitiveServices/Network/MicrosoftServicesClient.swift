@@ -134,8 +134,8 @@ func createServiceRequest(configuration: ServiceConfiguration) -> NSURLRequest {
     return request
 }
 
-func performService(serviceType: ServiceType, onImageAtUrl url: NSURL, errorHandler: (NSError?) -> (), successHandler: (AnyObject) -> ()) -> NSURLSessionTask {
-    let request = createServiceRequest(ServiceConfiguration(type: serviceType, data: .URL(url)))
+func performService(serviceType: ServiceType, serviceData: ServicePostData, errorHandler: (NSError?) -> (), successHandler: (AnyObject) -> ()) -> NSURLSessionTask {
+    let request = createServiceRequest(ServiceConfiguration(type: serviceType, data: serviceData))
     
     let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
         if let error = error {
@@ -158,8 +158,8 @@ func performService(serviceType: ServiceType, onImageAtUrl url: NSURL, errorHand
     return task
 }
 
-func analyzeImage(url: NSURL, delegate: ImageAnalyzerDelegate) -> NSURLSessionTask {
-    return performService(.Analyze, onImageAtUrl: url, errorHandler: { delegate.imageAnalyzerFailedWithError($0) }) { (json) -> () in
+func analyzeImage(serviceData: ServicePostData, delegate: ImageAnalyzerDelegate) -> NSURLSessionTask {
+    return performService(.Analyze, serviceData: serviceData, errorHandler: { delegate.imageAnalyzerFailedWithError($0) }) { (json) -> () in
         do {
             let result = try parseAnalyzeImageResult(json)
             delegate.imageAnalyzerFinishedWithResult(result)
@@ -169,8 +169,8 @@ func analyzeImage(url: NSURL, delegate: ImageAnalyzerDelegate) -> NSURLSessionTa
     }
 }
 
-func describeImage(url: NSURL, delegate: ImageDescribeDelegate) -> NSURLSessionTask {
-    return performService(.Describe, onImageAtUrl: url, errorHandler: { delegate.imageDescribeFailedWithError($0) }) { (json) -> () in
+func describeImage(serviceData: ServicePostData, delegate: ImageDescribeDelegate) -> NSURLSessionTask {
+    return performService(.Describe, serviceData: serviceData, errorHandler: { delegate.imageDescribeFailedWithError($0) }) { (json) -> () in
         do {
             let result = try parseDescribeImageResult(json)
             delegate.imageDescribeFinishedWithResult(result)
@@ -180,8 +180,8 @@ func describeImage(url: NSURL, delegate: ImageDescribeDelegate) -> NSURLSessionT
     }
 }
 
-func ocrImage(url: NSURL, delegate: ImageOCRDelegate) -> NSURLSessionTask {
-    return performService(.OCR, onImageAtUrl: url, errorHandler: { delegate.imageOCRFailedWithError($0) }) { (json) -> () in
+func ocrImage(serviceData: ServicePostData, delegate: ImageOCRDelegate) -> NSURLSessionTask {
+    return performService(.OCR, serviceData: serviceData, errorHandler: { delegate.imageOCRFailedWithError($0) }) { (json) -> () in
         do {
             let result = try parseOCRImageResult(json)
             delegate.imageOCRFinishedWithResult(result)
@@ -191,8 +191,8 @@ func ocrImage(url: NSURL, delegate: ImageOCRDelegate) -> NSURLSessionTask {
     }
 }
 
-func emotionImage(url: NSURL, delegate: ImageEmotionDelegate) -> NSURLSessionTask {
-    return performService(.Emotion, onImageAtUrl: url, errorHandler: { delegate.imageEmotionFailedWithError($0) }) { (json) -> () in
+func emotionImage(serviceData: ServicePostData, delegate: ImageEmotionDelegate) -> NSURLSessionTask {
+    return performService(.Emotion, serviceData: serviceData, errorHandler: { delegate.imageEmotionFailedWithError($0) }) { (json) -> () in
         do {
             let result = try parseEmotionImageResult(json)
             delegate.imageEmotionFinishedWithResult(result)
@@ -202,34 +202,78 @@ func emotionImage(url: NSURL, delegate: ImageEmotionDelegate) -> NSURLSessionTas
     }
 }
 
-protocol MicrosoftServicesDelegate: ImageAnalyzerDelegate, ImageDescribeDelegate, ImageOCRDelegate, ImageEmotionDelegate {
+enum ResultOrError<T> {
+    case Result(T)
+    case Error(NSError?)
+    
+    var result: T? {
+        switch self {
+        case let .Result(result):
+            return result
+        case .Error:
+            return .None
+        }
+    }
+}
+
+protocol MicrosoftServicesDelegate {
     func client(client: MicrosoftServicesClient, didLoadImage: UIImage)
+    func client(client: MicrosoftServicesClient, didReceiveAnalyzerResult: ResultOrError<AnalyzeImageResult>)
+    func client(client: MicrosoftServicesClient, didReceiveOCRResult: ResultOrError<OCRImageResult>)
+    func client(client: MicrosoftServicesClient, didReceiveDescribeResult: ResultOrError<DescribeImageResult>)
+    func client(client: MicrosoftServicesClient, didReceiveEmotionResult: ResultOrError<[EmotionImageResultItem]>)
 }
 
 class MicrosoftServicesClient {
-    let url: NSURL
-    var tasks: [NSURLSessionTask] = []
+    private var tasks: [NSURLSessionTask] = []
+    private let delegate: MicrosoftServicesDelegate
     
-    func completed() -> Bool {
-        return self.tasks.reduce(true) { $0 && $1.state == .Completed }
+    internal func numberOfUnfinishedTasks() -> UInt {
+        return self.tasks.reduce(0) { $0 + ($1.state == .Completed ? 0 : 1) }
     }
     
-    init(url: NSURL, delegate: MicrosoftServicesDelegate) {
-        self.url = url
+    internal func completed() -> Bool {
+        return self.numberOfUnfinishedTasks() == 0
+    }
+    
+    internal init(url: NSURL, delegate: MicrosoftServicesDelegate) {
+        self.delegate = delegate
         
         let imageDownloadTask = NSURLSession.sharedSession().dataTaskWithRequest(NSURLRequest(URL: url)) { (data, response, error) -> Void in
             if let data = data, image = UIImage(data: data) {
                 delegate.client(self, didLoadImage: image)
-
+                
             }
-            }
+        }
         imageDownloadTask.resume()
         
         self.tasks.append(imageDownloadTask)
-        self.tasks.append(analyzeImage(url, delegate: delegate))
-        self.tasks.append(describeImage(url, delegate: delegate))
-        self.tasks.append(ocrImage(url, delegate: delegate))
-        self.tasks.append(emotionImage(url, delegate: delegate))
+        self.startAnalyzingWithData(.URL(url))
+    }
+    
+    internal init(image: UIImage, delegate: MicrosoftServicesDelegate) {
+        self.delegate = delegate
+
+        self.delegate.client(self, didLoadImage: image)
+        
+        // reduce image-size to save bandwidth and speed up the uploading
+        let scaledImage: UIImage
+        if image.size.width > 1000 || image.size.height > 1000 {
+            scaledImage = image.imageResizedToFitInBounds(CGSize(width: 1000, height: 1000))
+        } else {
+            scaledImage = image
+        }
+        if let dataRepresentation = UIImageJPEGRepresentation(scaledImage, CGFloat(0.8)) {
+            let data = ServicePostData.Data(dataRepresentation)
+            self.startAnalyzingWithData(data)
+        }
+    }
+    
+    private func startAnalyzingWithData(serviceData: ServicePostData) {
+        self.tasks.append(analyzeImage(serviceData, delegate: self))
+        self.tasks.append(describeImage(serviceData, delegate: self))
+        self.tasks.append(ocrImage(serviceData, delegate: self))
+        self.tasks.append(emotionImage(serviceData, delegate: self))
     }
     
     deinit {
@@ -237,4 +281,46 @@ class MicrosoftServicesClient {
             task.cancel()
         }
     }
+}
+
+extension MicrosoftServicesClient: ImageAnalyzerDelegate, ImageDescribeDelegate, ImageOCRDelegate, ImageEmotionDelegate {
+    func imageAnalyzerFailedWithError(error: NSError?) {
+        print(error)
+    }
+    
+    func imageAnalyzerFinishedWithResult(result: AnalyzeImageResult) {
+        self.delegate.client(self, didReceiveAnalyzerResult: .Result(result))
+        print(result)
+    }
+    
+    func imageDescribeFailedWithError(error: NSError?) {
+        print(error)
+        self.delegate.client(self, didReceiveAnalyzerResult: .Error(error))
+    }
+    
+    func imageDescribeFinishedWithResult(result: DescribeImageResult) {
+        self.delegate.client(self, didReceiveDescribeResult: .Result(result))
+        print(result)
+    }
+    
+    func imageOCRFinishedWithResult(result: OCRImageResult) {
+        self.delegate.client(self, didReceiveOCRResult: .Result(result))
+        print(result)
+    }
+    
+    func imageOCRFailedWithError(error: NSError?) {
+        print(error)
+        self.delegate.client(self, didReceiveOCRResult: .Error(error))
+    }
+    
+    func imageEmotionFailedWithError(error: NSError?) {
+        print(error)
+        self.delegate.client(self, didReceiveEmotionResult: .Error(error))
+    }
+    
+    func imageEmotionFinishedWithResult(result: [EmotionImageResultItem]) {
+        print(result)
+        self.delegate.client(self, didReceiveEmotionResult: .Result(result))
+    }
+
 }
