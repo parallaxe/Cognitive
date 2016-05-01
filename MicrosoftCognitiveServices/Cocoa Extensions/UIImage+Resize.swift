@@ -8,13 +8,24 @@
 
 import UIKit
 
+enum ImageScaleOption {
+    case UseScaleFactorFromMainScreen
+    case Specific(CGFloat)
+}
+
 extension UIImage {
-    func imageResizedToFitInBounds(bounds: CGSize) -> UIImage {
+    func imageResizedToFitInBounds(bounds: CGSize, scaleOption: ImageScaleOption = .UseScaleFactorFromMainScreen) -> (image: UIImage, scaleFactor: CGFloat) {
         // scaling is copied and adapted from http://nshipster.com/image-resizing/
-        let scaleFactor = bounds.width / self.size.width
+        let scaleFactor = min(bounds.width / self.size.width, bounds.height / self.size.height)
         let size = CGSizeApplyAffineTransform(self.size, CGAffineTransformMakeScale(scaleFactor, scaleFactor))
         let hasAlpha = false
-        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+        let scale: CGFloat
+        switch scaleOption {
+        case .UseScaleFactorFromMainScreen:
+            scale = 0.0
+        case let .Specific(specificScaleFactor):
+            scale = specificScaleFactor
+        }
         
         UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
         self.drawInRect(CGRect(origin: CGPointZero, size: size))
@@ -22,6 +33,6 @@ extension UIImage {
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return scaledImage
+        return (image: scaledImage, scaleFactor: scaleFactor)
     }
 }

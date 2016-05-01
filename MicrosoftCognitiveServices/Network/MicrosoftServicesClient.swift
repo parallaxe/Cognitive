@@ -76,7 +76,7 @@ struct ServiceDescribeEndPoint: ServiceEndPoint {
 }
 
 struct ServiceOCREndPoint: ServiceEndPoint {
-    let path = "https://api.projectoxford.ai/vision/v1.0/ocr"
+    let path = "https://api.projectoxford.ai/vision/v1/ocr"
     let requestParameters = [
         "entities" : "true",
         "detectOrientation" : "true"
@@ -227,6 +227,7 @@ protocol MicrosoftServicesDelegate {
 class MicrosoftServicesClient {
     private var tasks: [NSURLSessionTask] = []
     private let delegate: MicrosoftServicesDelegate
+    private var scaleFactor: CGFloat = 1
     
     internal func numberOfUnfinishedTasks() -> UInt {
         return self.tasks.reduce(0) { $0 + ($1.state == .Completed ? 0 : 1) }
@@ -253,19 +254,19 @@ class MicrosoftServicesClient {
     
     internal init(image: UIImage, delegate: MicrosoftServicesDelegate) {
         self.delegate = delegate
-
-        self.delegate.client(self, didLoadImage: image)
         
         // reduce image-size to save bandwidth and speed up the uploading
         let scaledImage: UIImage
-        let maximumSize: CGFloat = 500
+        let maximumSize: CGFloat = 800
         if image.size.width > maximumSize || image.size.height > maximumSize {
-            scaledImage = image.imageResizedToFitInBounds(CGSize(width: maximumSize, height: maximumSize))
+            (scaledImage, self.scaleFactor) = image.imageResizedToFitInBounds(CGSize(width: maximumSize, height: maximumSize), scaleOption: .Specific(1.0))
+            self.scaleFactor = 1 / self.scaleFactor
         } else {
             scaledImage = image
         }
+        self.delegate.client(self, didLoadImage: image)
         if let dataRepresentation = UIImageJPEGRepresentation(scaledImage, CGFloat(0.8)) {
-            print("filesize: \(dataRepresentation.length)")
+            print("filesize: \(dataRepresentation.length), image size: \(scaledImage.size)")
             let data = ServicePostData.Data(dataRepresentation)
             self.startAnalyzingWithData(data)
         }
@@ -306,7 +307,38 @@ extension MicrosoftServicesClient: ImageAnalyzerDelegate, ImageDescribeDelegate,
     }
     
     func imageOCRFinishedWithResult(result: OCRImageResult) {
-        self.delegate.client(self, didReceiveOCRResult: .Result(result))
+        let scaleStringFrame =  {
+            (frameAsString: String, scaleFactor: CGFloat) -> String in
+            let components = frameAsString.componentsSeparatedByString(",").map{Int($0)}
+            guard components.count == 4 else {
+                return frameAsString
+            }
+            
+            let unscaledFrame = CGRect(x: components[0]!, y: components[1]!, width: components[2]!, height: components[3]!)
+            let frame = CGRectIntegral(CGRectApplyAffineTransform(unscaledFrame, CGAffineTransformMakeScale(self.scaleFactor, self.scaleFactor)))
+            return "\(Int(frame.origin.x)),\(Int(frame.origin.y)),\(Int(frame.width)),\(Int(frame.height))"
+        }
+        
+        var modifiedResult = result
+        // apply scale-factor that was used when the image was transferred to the server
+        for regionIndex in 0..<(result.regions?.count ?? 0) {
+            let region = result.regions![regionIndex]
+            if let boundingBox = region.boundingBox {
+                modifiedResult.regions![regionIndex].boundingBox = scaleStringFrame(boundingBox, self.scaleFactor)
+            }
+            for lineIndex in 0..<(region.lines?.count ?? 0) {
+                let line = region.lines![lineIndex]
+                if let boundingBox = line.boundingBox {
+                    modifiedResult.regions![regionIndex].lines![lineIndex].boundingBox = scaleStringFrame(boundingBox, self.scaleFactor)
+                }
+                for wordIndex in 0..<(line.words?.count ?? 0) {
+                    if let boundingBox = line.words![wordIndex].boundingBox {
+                        modifiedResult.regions![regionIndex].lines![lineIndex].words![wordIndex].boundingBox = scaleStringFrame(boundingBox, self.scaleFactor)
+                    }
+                }
+            }
+        }
+        self.delegate.client(self, didReceiveOCRResult: .Result(modifiedResult))
         print(result)
     }
     
