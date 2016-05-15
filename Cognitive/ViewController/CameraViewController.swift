@@ -33,9 +33,10 @@ class CameraViewController: UIViewController {
             self.imagePicker.view.rightAnchor.constraintEqualToAnchor(self.view.rightAnchor).active = true
             
             self.imagePicker.didMoveToParentViewController(self)
+            
+            self.cameraOverlayView.frame = self.imagePicker.view.bounds
         }
         
-        self.cameraOverlayView.frame = self.imagePicker.view.bounds
     }
 }
 
