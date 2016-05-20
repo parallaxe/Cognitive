@@ -5,16 +5,7 @@ This is a fun-project, intended to see what [Microsofts Cognitive Services (MCS)
 - Register an account at [MCS](https://www.microsoft.com/cognitive-services/) (they provide free accounts without any hassle)
 - Subscribe at least to the Computer Vision-, Emotion- and Face-Services
 - Clone this repository
-- Create a swift-file named 'SubscriptionKeys.swift' in the following form
-
-```swift
-enum SubscriptionKeys: String {
-    case ComputerVision = "your computer vision key"
-    case Emotion = "your emotion key"
-    case Face = "your face key"
-}
-```
-
+- Edit the 'SubscriptionKeys.swift'-file and add enter your subscription-keys
 - Compile and start the app
 
 # The App
