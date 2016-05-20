@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		382DBFE51CEF8EC800AFAFE6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 382DBFE41CEF8EC800AFAFE6 /* LICENSE */; };
 		3831EE841CB6FBBA000AB914 /* DescribeImageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3831EE831CB6FBBA000AB914 /* DescribeImageResult.swift */; };
 		3831EE861CB6FFE1000AB914 /* OCRImageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3831EE851CB6FFE1000AB914 /* OCRImageResult.swift */; };
 		3831EE881CB7021C000AB914 /* EmotionImageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3831EE871CB7021C000AB914 /* EmotionImageResult.swift */; };
@@ -98,6 +99,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		382DBFE41CEF8EC800AFAFE6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		3831EE831CB6FBBA000AB914 /* DescribeImageResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DescribeImageResult.swift; path = Model/Services/DescribeImageResult.swift; sourceTree = "<group>"; };
 		3831EE851CB6FFE1000AB914 /* OCRImageResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OCRImageResult.swift; path = Model/Services/OCRImageResult.swift; sourceTree = "<group>"; };
 		3831EE871CB7021C000AB914 /* EmotionImageResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmotionImageResult.swift; path = Model/Services/EmotionImageResult.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		3838A1871CB56AB500423913 = {
 			isa = PBXGroup;
 			children = (
+				382DBFE41CEF8EC800AFAFE6 /* LICENSE */,
 				38B22CD51CD568360040E142 /* README.md */,
 				3838A1921CB56AB500423913 /* Cognitive */,
 				3838A1A71CB56AB500423913 /* CognitiveTests */,
@@ -466,6 +469,7 @@
 			files = (
 				3838A1BA1CB57FF900423913 /* OCR.json in Resources */,
 				3838A1B61CB57DCA00423913 /* AnalyzeImage.json in Resources */,
+				382DBFE51CEF8EC800AFAFE6 /* LICENSE in Resources */,
 				3838A19E1CB56AB500423913 /* LaunchScreen.storyboard in Resources */,
 				3838A19B1CB56AB500423913 /* Assets.xcassets in Resources */,
 				3838A1BC1CB5808800423913 /* Emotion.json in Resources */,
